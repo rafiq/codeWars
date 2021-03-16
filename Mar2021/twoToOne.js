@@ -1,12 +1,7 @@
 function longest(s1, s2) {
-    let set = new Set();
     let array = s1.concat(s2).split("")
 
-    for (let el of array) {
-        set.add(el)
-    }
-    return set.values();
-
+    return Array.from(new Set(array)).sort().join("");
   }
   console.log(
     longest("aretheyhere", "yestheyarehere"), //"aehrsty")

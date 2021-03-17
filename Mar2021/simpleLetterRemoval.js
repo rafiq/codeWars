@@ -1,20 +1,47 @@
 function solve(s, k){
-    let strArray =  s.split("");
-    let alphaArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    let j = 0;
+    // let alphaArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-    while (k > 0) {
-        for (let i = 0; i < strArray.length; i++) {
-            if (strArray[i] === alphaArray[j]) {
-                // strArray =  strArray.slice(0,i)  +  strArray.slice(i + 1);
-                strArray.splice(i,1)
-                k--;
-                break;
+    // let count = k;
+    // let str = s;
+    // while (count > 0) {
+    //     let len = 0;
+
+    //     for (let i = 0; i < alphaArray.length; i++) {
+
+    //         while (str.includes(alphaArray[i])) {
+    //             len = s.match(new RegExp(alphaArray[i], "gi")).length;
+    //                 str = str.slice(0,str.indexOf(alphaArray[i])) + str.slice(str.indexOf(alphaArray[i]) + 1);
+    //                 count--;
+    //         }
+
+    //     }
+
+    // }
+    // return str
+
+    let alphabet = [...'abcdefghijklmnopqrstuvwxyz'];
+    let cursor = 0;
+
+    while(k > 0) {
+        let len = 0;
+
+        if(s.includes(alphabet[cursor]))
+          len = s.match(new RegExp(alphabet[cursor], "gi")).length;
+
+        if(len > 0) {
+            for(let i=0; i<len; i++) {
+                if(k > 0) {
+                    s = s.replace(alphabet[cursor], "");
+                    k--;
+                } else
+                    break;
             }
         }
-        j++;
+        cursor++;
+        if(cursor > 25)
+            break;
     }
-    return strArray.join("");
+    return s;
 }
 console.log(
     solve('abracadabra', 1),//'bracadabra');

@@ -13,7 +13,11 @@ function solution(fullText, searchText){
 
 
     // return count;
+    // return fullText.split(searchText).length - 1;
+    // let regex = "/" + searchText + "/g";
+
     return fullText.split(searchText).length - 1;
+    // return fullText.match(searchText/"g")
 }
 console.log(
     solution('abcdeb','b'),// 2);

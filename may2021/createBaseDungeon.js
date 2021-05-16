@@ -1,26 +1,30 @@
 class Game {
     constructor(name, level = 0){
-        this.name = name;
-        this.level = level > 0 || level < 1 ? parseInt(level,10) : 0;
+        this.player = new Player(name);
+        this.level = +level||0;
         this.floors = []
     }
   }
 
-  class Player extends Game {
-    constructor(name) {
-        super(name)
+  class Player {
+    constructor(name = "Player") {
+            this.name = typeof name !== "string" || name == "" ? "Player" : name;
+            this.health = 100;
+            this.position = {x:0,y:0};
+            this.damage = 10;
+            this.luck = 1;
     }
   }
 
   class Monster {
-    constructor() {
-
+    constructor(level) {
+        this.level = level;
     }
   }
 
   class Map {
-    constructor() {
-
+    constructor(level) {
+        this.level = level;
     }
   }
   var game = new Game('Leeroy', 0)

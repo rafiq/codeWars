@@ -1,0 +1,1 @@
+SELECT age, count(age) people_count FROM people GROUP BY age;

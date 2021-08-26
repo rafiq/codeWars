@@ -1,0 +1,1 @@
+SELECT sum(age) age_sum FROM people;

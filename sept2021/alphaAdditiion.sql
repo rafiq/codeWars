@@ -1,0 +1,1 @@
+SELECT SUM(letters) FROM table;
